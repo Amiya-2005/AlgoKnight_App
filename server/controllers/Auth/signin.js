@@ -47,7 +47,8 @@ const signin = async (req, res) => {
         res.cookie("token", token,
             {
                 httpOnly: false,
-                secure: false,
+                secure: true,
+                sameSite: 'None'
             }
         );
         return res.status(200).json({

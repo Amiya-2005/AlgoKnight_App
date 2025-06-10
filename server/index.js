@@ -29,8 +29,8 @@ dbConnect();
 
 //---Middlewares
 app.use(cors({
-    origin: 'http://localhost:5173', // allow Vite dev server
-    credentials: true               // if you're using cookies or sessions
+    origin: ['http://localhost:5173', 'https://algoknight.onrender.com'], 
+    credentials: true               
 }));
 
 //body parsers
