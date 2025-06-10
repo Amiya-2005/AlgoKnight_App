@@ -3,7 +3,7 @@ import { logoutUser } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_SERVER_URL;
 
 // Create axios instance with default config
 const api = axios.create({
