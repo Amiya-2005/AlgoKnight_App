@@ -24,8 +24,9 @@ const gsign = async (req, res) => {
 
         res.cookie("token", token,
             {
-                httpOnly: false,
-                secure: false,
+                httpOnly: true,
+                secure: true,
+                sameSite: 'None'
             }
         );
         return res.status(200).json({

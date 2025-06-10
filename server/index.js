@@ -9,6 +9,8 @@ import tokenChecker from './middleware/tokenChecker.js';
 import signup from './controllers/Auth/signup.js';
 import signin from './controllers/Auth/signin.js';
 import gsign from './controllers/Auth/gsign.js';
+import logout from './controllers/Auth/logout.js';
+
 
 import updateProfile from './controllers/ProfileData/updateProfile.js';
 import updateHandles from './controllers/ProfileData/updateHandles.js';
@@ -48,6 +50,7 @@ app.get("/", (req, res) => {
 app.post("/auth/signup", signup)
 app.post("/auth/signin", signin)
 app.post("/auth/gsign", gsign)
+app.post("/auth/logout", logout)
 
 app.get("/profile/getProfileData", getProfileData)
 app.post("/profile/updateProfile", updateProfile)

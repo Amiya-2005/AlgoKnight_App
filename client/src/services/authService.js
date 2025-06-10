@@ -28,8 +28,9 @@ export const gsign = async (credentials) => {
   return response.data;
 }
 
-export const logout = () => {
-  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+export const logout = async () => {
+  const response = await api.post(AUTH_ENDPOINTS.LOGOUT);
+  return response.data;
 };
 
 export const forgotPassword = async (email) => {
