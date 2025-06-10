@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;          
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 10px;
+  border: 1px solid #f3f4f6;
+}
+
+
+.dark.thin-scrollbar::-webkit-scrollbar-track {  
+  background: #1F2937;
+}
+
+.dark.thin-scrollbar::-webkit-scrollbar-thumb,  /* Main scrollbar (ele = html) */
+.dark .thin-scrollbar::-webkit-scrollbar-thumb { /* Other scrollbars */
+  background-color: #111827;
+  border-radius: 10px;
+  border: 0.2px solid #1F2937;
+}
+

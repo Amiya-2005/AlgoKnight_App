@@ -1,0 +1,31 @@
+# Node modules (both frontend and backend)
+client/node_modules/
+server/node_modules/
+
+# Environment variables
+client/.env
+server/.env
+
+# Build output
+client/build/
+server/dist/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Misc/scratch folders, files
+Worker/
+z.Notes/
+api(sources)/
+z.Notes
+rough.html
+rough.js
+
+client/z.Features.js
+client/z.Structure.js
+client/z.temp.jsx
+
+server/dataSync.js
+server/z.clean_db.js

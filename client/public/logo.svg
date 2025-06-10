@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Blue background with rounded corners -->
+  <rect width="32" height="32" rx="6" ry="6" fill="#2563eb"/>
+  
+  <!-- White 'A' letter -->
+  <path d="M16 6 L24 26 L20.5 26 L18.8 21.5 L13.2 21.5 L11.5 26 L8 26 L16 6 Z M17.5 18 L16 13.5 L14.5 18 L17.5 18 Z" fill="white"/>
+  
+  <!-- Subtle highlight for depth -->
+  <rect width="32" height="2" rx="6" ry="2" fill="rgba(255,255,255,0.1)"/>
+</svg>
