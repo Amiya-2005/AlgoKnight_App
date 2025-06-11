@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Avatar from '../common/Avatar';
 
-import {  Menu, Moon, Sun, User } from 'lucide-react';
+import { Menu, Moon, Sun, User } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
 import { ThemeContext } from '../../context/ThemeContext';
 import Button from '../common/Button';
@@ -43,30 +43,47 @@ const Navbar = ({ toggleSidebar, scrolled }) => {
 
           {/* Right section: User menu & actions */}
           <div className="min-w-1/6 flex items-center space-x-3">
-            {/* Theme toggle */}
+
+            {/* Theme Toggle Switch */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 focus:outline-none"
+              className="relative inline-flex items-center w-16 h-8 bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-300 ease-in-out focus:outline-none "
               aria-label="Toggle dark mode"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              {/* Toggle Thumb with Icon */}
+              <div
+                className={`absolute w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center ${theme === 'dark' ? 'translate-x-8' : 'translate-x-1'
+                  }`}
+              >
+                {theme === 'light' ? (
+                  <Sun size={14} className="text-yellow-500" />
+                ) : (
+                  <Moon size={14} className="text-blue-600" />
+                )}
+              </div>
+
+              {/* Screen reader text */}
+              <span className="sr-only">
+                {theme === 'dark' ? 'Light theme' : 'Dark theme'}
+              </span>
             </button>
 
 
             {/* User menu */}
             {user ? (
               <div className="relative">
-                  <div className="flex items-center">
-                    <Avatar
-                      src={user.avatar}
-                      userName={user.userName}
-                      size="sm"
-                      className="ring-2 ring-white dark:ring-slate-800"
-                    />
-                    <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-200 hidden md:block transition-all">
-                      {user.userName}
-                    </span>
-                  </div>
+                <div className="flex items-center">
+                  <Avatar
+                    src={user.avatar}
+                    userName={user.userName}
+                    size="sm"
+                    className="ring-2 ring-white dark:ring-slate-800"
+                  />
+                  <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-200 hidden md:block transition-all">
+                    {user.userName}
+                  </span>
+                </div>
               </div>
             ) : (
               <Link to="/login">
