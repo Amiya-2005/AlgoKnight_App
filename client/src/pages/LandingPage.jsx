@@ -108,7 +108,7 @@ const LandingPage = () => {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Problem Analytics</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Visualize your coding progress with category-wise pie charts and activity heatmaps for each platform. Knight your strengths and identify areas for improvement.
+              Visualize your coding progress with category-wise pie charts and activity heatmaps for each platform. Monitor your strengths and identify areas for improvement.
             </p>
           </div>
         </div>
@@ -256,7 +256,7 @@ const LandingPage = () => {
           Ready to Improve Your Coding Skills?
         </h2>
         <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-          Join thousands of programmers who are monitoring their progress and improving their skills with AlgoKnight.
+          Join thousands of programmers who are monitoring their progress and boosting their skills with AlgoKnight.
         </p>
         <Link to="/register">
           <button className="bg-white text-indigo-600 px-6 py-3 rounded-md font-medium hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-all duration-300 transform hover:scale-105">
