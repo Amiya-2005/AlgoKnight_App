@@ -63,19 +63,19 @@ const LandingPage = () => {
           }`}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-          Level up your coding with <span className="text-indigo-600">AlgoKnight</span>
+          Level up your coding with <span className="text-blue-600 dark:text-blue-500">AlgoKnight</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-          The ultimate platform for competitive programmers to track problems, manage contest schedules,
-          and improve coding skills.
+          The ultimate platform for competitive programmers to track progress, manage contest schedules,
+          and practice good problems to improve coding skills.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/register">
             <Button variant="primary" size="lg" dark={theme === 'dark'}>Get Started</Button>
           </Link>
-          <Link to="/about">
-            <Button variant="info" outline={true} size="lg" dark={theme === 'dark'}>Explore</Button>
-          </Link>
+          <div onClick={() => document.getElementById('features').scrollIntoView({behavior : 'smooth' , block : 'start'})}>
+            <Button variant="info" outline={true} size="lg" dark={theme === 'dark'} >Explore</Button>
+          </div>
         </div>
       </div>
 
@@ -91,6 +91,7 @@ const LandingPage = () => {
 
       {/* Feature Section */}
       <div
+      id="features"
         ref={featuresRef}
         className={`grid md:grid-cols-3 gap-8 mb-16 transition-all duration-700 ${animatedSections.features ? 'opacity-100' : 'opacity-0'
           }`}

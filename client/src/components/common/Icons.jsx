@@ -1,3 +1,7 @@
+export const LinkedInIcon = ({size = 40}) => (
+    <img src="/linkedin_icon.svg" width={size} height={size}/>
+);
+
 export const CodeForcesIcon = ({ size = 24, theme = 'dark' }) => (
     <img src='/cf_logo.png' width={size} height={size} />
 );
