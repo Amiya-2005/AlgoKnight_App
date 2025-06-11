@@ -142,6 +142,7 @@ const SearchModal = ({ isOpen, platformIcons, onClose, onAddUser, theme }) => {
 
   const handleSearch = async () => {
     if (!searchQuery.trim()) return;
+    setShowResults(false);
 
     setIsSearching(true);
     try {
@@ -156,6 +157,11 @@ const SearchModal = ({ isOpen, platformIcons, onClose, onAddUser, theme }) => {
       setShowResults(true);
     }
   };
+
+  useEffect(() => {
+    setSearchResults([]);
+    setShowResults(false);
+  }, [searchQuery])
 
   const handleAddUser = (user) => {
     onAddUser(user);
