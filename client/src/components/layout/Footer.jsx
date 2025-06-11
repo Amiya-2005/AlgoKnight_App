@@ -25,33 +25,33 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/amiya-ranjan-maharana/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-md hover:shadow-lg border border-gray-300 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-600 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 hover:scale-102"
+                className="group relative bg-white dark:bg-slate-700 text-gray-600 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-300 shadow-md hover:shadow-lg dark:shadow-xl dark:shadow-black/40 dark:hover:shadow-2xl dark:hover:shadow-black/50 border border-gray-300 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-400 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
               >
                 <span className="sr-only">LinkedIn Account</span>
                 <LinkedInIcon size={20} />
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent dark:from-blue-900/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent dark:from-blue-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
               </a>
 
               <a
                 href="https://codeforces.com/profile/sniper_0101"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 shadow-md hover:shadow-lg border border-gray-300 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-600 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 hover:scale-102"
+                className="group relative bg-white dark:bg-slate-700 text-gray-600 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-300 shadow-md hover:shadow-lg dark:shadow-xl dark:shadow-black/40 dark:hover:shadow-2xl dark:hover:shadow-black/50 border border-gray-300 dark:border-slate-600 hover:border-red-300 dark:hover:border-red-400 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
               >
                 <span className="sr-only">Codeforces Profile</span>
                 <CodeForcesIcon size={20} />
-                <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-transparent dark:from-red-900/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-transparent dark:from-red-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
               </a>
 
               <a
                 href="https://leetcode.com/u/amiya05/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 shadow-md hover:shadow-lg border border-gray-300 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-600 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 hover:scale-102"
+                className="group relative bg-white dark:bg-slate-700 text-gray-600 dark:text-slate-200 hover:text-orange-600 dark:hover:text-orange-300 shadow-md hover:shadow-lg dark:shadow-xl dark:shadow-black/40 dark:hover:shadow-2xl dark:hover:shadow-black/50 border border-gray-300 dark:border-slate-600 hover:border-orange-300 dark:hover:border-orange-400 rounded-xl p-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
               >
                 <span className="sr-only">Leetcode Profile</span>
                 <LeetCodeIcon size={20} theme={theme} />
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent dark:from-orange-900/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent dark:from-orange-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
               </a>
             </div>
           </div>
