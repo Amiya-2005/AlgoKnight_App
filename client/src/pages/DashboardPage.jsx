@@ -51,7 +51,7 @@ const PlatformSelector = ({ platformIcons, platform, data, ratingData, isActive,
 
   return (
     <div
-      className={`flex-1 min-w-0 rounded-xl p-4 cursor-pointer transition-transform duration-300 hover:scale-[1.02]
+      className={`flex-1 min-w-0 rounded-xl p-4 cursor-pointer transition-transform duration-300 hover:scale-[1.02] border 
         ${isActive
           ? 'dark:bg-blue-900/30 dark:border-blue-50 bg-blue-50 border-blue-500'
           : 'dark:bg-gray-700 dark:hover:bg-gray-600 bg-gray-50 hover:bg-gray-100 border-transparent '
