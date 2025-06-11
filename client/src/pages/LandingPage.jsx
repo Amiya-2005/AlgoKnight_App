@@ -211,15 +211,15 @@ const LandingPage = () => {
             }`}>
             <div className="flex items-center mb-4">
               <div className="bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                JD
+                AM
               </div>
               <div className="ml-4">
-                <h4 className="font-semibold text-gray-900 dark:text-white">John Doe</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Software Engineer</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white">Amrutanshu</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">CSE'27, NITR</p>
               </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 italic">
-              "AlgoKnight helped me prepare for coding interviews systematically. I could track my progress and focus on my weak areas."
+              "AlgoKnight helped me prepare for coding interviews systematically. I could track my progress and focus on my weak areas through the rich dashboard."
             </p>
           </div>
 
@@ -233,8 +233,8 @@ const LandingPage = () => {
                 JS
               </div>
               <div className="ml-4">
-                <h4 className="font-semibold text-gray-900 dark:text-white">Jane Smith</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Computer Science Student</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white">Jagnyasai</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Specialist @Codeforces</p>
               </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 italic">
