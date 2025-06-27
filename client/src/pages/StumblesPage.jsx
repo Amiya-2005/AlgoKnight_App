@@ -161,7 +161,7 @@ const AddProblemModal = ({ isOpen, onClose, onAdd, theme }) => {
                 : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                 } focus:ring-1 focus:ring-blue-500 outline-none`}
               placeholder="Helpful hint or approach direction..."
-              maxLength={50}
+              maxLength={200}
             />
           </div>
 
@@ -176,7 +176,7 @@ const AddProblemModal = ({ isOpen, onClose, onAdd, theme }) => {
                 : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                 } focus:ring-1 focus:ring-blue-500 outline-none`}
               placeholder="Key insight or thought process behind the solution..."
-              maxLength={450}
+              maxLength={500}
             />
           </div>
 
