@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema({
             connectionsSolved: {
                 type: Number,      //No of friends/connections who have solved this problem (informational, computed post-selection)
                 required: true,
+                default: 0,
             },
             matchedTopic: {
                 type: String,      //human-readable weak topic this problem was picked for (null when built via fallback)
