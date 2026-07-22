@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import PageContainer from './components/layout/PageContainer';
 import { DashBordProvider } from './context/DashBoardContext';
 import { SmartSheetProvider } from './context/SmartSheetContext';
+import { AIAnalysisProvider } from './context/AIAnalysisContext';
 import { ProfileProvider } from './context/ProfileContext';
 import { useEffect } from 'react';
 import { NetworkProvider } from './context/NetworkContext';
@@ -31,6 +32,7 @@ function App() {
         <ThemeProvider>
           <AuthProvider>
             <DashBordProvider>
+              <AIAnalysisProvider>
               <SmartSheetProvider>
                 <NetworkProvider>
                   <UpsolveProvider>
@@ -48,6 +50,7 @@ function App() {
                   </UpsolveProvider>
                 </NetworkProvider>
               </SmartSheetProvider>
+              </AIAnalysisProvider>
             </DashBordProvider>
           </AuthProvider>
         </ThemeProvider>
