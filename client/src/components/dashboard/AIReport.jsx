@@ -44,6 +44,7 @@ export default function AIReport() {
     : 'bg-white border border-gray-200 shadow-sm'
     }`;
 
+  const subHeading = theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600';
   const subtleText = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
   const chipBg = theme === 'dark' ? 'bg-gray-700/40' : 'bg-gray-50/60';
 
@@ -54,7 +55,7 @@ export default function AIReport() {
           <Sparkles className="w-5 h-5 text-blue-500" />
           <div>
             <h2 className="text-xl font-semibold">AI Report</h2>
-            <p className={`text-sm ${subtleText}`}>Diagnosis of your weak topics, rating trend and consistency</p>
+            <p className={`text-sm ${subHeading}`}>Diagnosis of your weak topics, rating trend and consistency</p>
           </div>
         </div>
 
@@ -102,7 +103,7 @@ export default function AIReport() {
           {/* Strengths */}
           {aiAnalysis.strengths?.length > 0 && (
             <div>
-              <h3 className={`text-sm font-semibold mb-2 ${subtleText}`}>Strengths</h3>
+              <h3 className={`text-sm font-semibold mb-2 ${subHeading}`}>Strengths</h3>
               <div className="flex flex-wrap gap-2">
                 {aiAnalysis.strengths.map((s, i) => (
                   <span key={i} className={`px-3 py-1 rounded-full text-xs font-medium ${theme === 'dark' ? 'bg-emerald-900/30 text-emerald-400' : 'bg-emerald-50 text-emerald-700'}`}>
@@ -116,7 +117,7 @@ export default function AIReport() {
           {/* Weak Topics */}
           {aiAnalysis.weakTopics?.length > 0 && (
             <div>
-              <h3 className={`text-sm font-semibold mb-2 ${subtleText}`}>Weak Topics</h3>
+              <h3 className={`text-sm font-semibold mb-2 ${subHeading}`}>Weak Topics</h3>
               <div className="space-y-3">
                 {aiAnalysis.weakTopics.map((w, i) => (
                   <div key={i} className={`p-3 rounded-lg ${chipBg}`}>
@@ -145,7 +146,7 @@ export default function AIReport() {
           {/* Rating Analysis */}
           {aiAnalysis.ratingAnalysis && (
             <div>
-              <h3 className={`text-sm font-semibold mb-2 ${subtleText}`}>Rating Trend</h3>
+              <h3 className={`text-sm font-semibold mb-2 ${subHeading}`}>Rating Trend</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {Object.entries(aiAnalysis.ratingAnalysis).map(([platform, info]) => (
                   info?.trend && info.trend !== 'no-data' ? (
@@ -166,7 +167,7 @@ export default function AIReport() {
           {/* Consistency */}
           {(aiAnalysis.consistencyAnalysis?.note || aiAnalysis.consistencyAnalysis?.recommendation) && (
             <div>
-              <h3 className={`text-sm font-semibold mb-2 ${subtleText}`}>Consistency</h3>
+              <h3 className={`text-sm font-semibold mb-2 ${subHeading}`}>Consistency</h3>
               <div className={`p-3 rounded-lg ${chipBg} space-y-1`}>
                 {aiAnalysis.consistencyAnalysis.note && <p className="text-sm">{aiAnalysis.consistencyAnalysis.note}</p>}
                 {aiAnalysis.consistencyAnalysis.recommendation && (
@@ -182,7 +183,7 @@ export default function AIReport() {
           {/* Key Points */}
           {aiAnalysis.keyPoints?.length > 0 && (
             <div>
-              <h3 className={`text-sm font-semibold mb-2 ${subtleText}`}>Key Points</h3>
+              <h3 className={`text-sm font-semibold mb-2 ${subHeading}`}>Key Points</h3>
               <ul className="space-y-1.5">
                 {(showAllPoints ? aiAnalysis.keyPoints : aiAnalysis.keyPoints.slice(0, 4)).map((k, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">

@@ -1,8 +1,7 @@
 // Thin, swappable wrapper around whichever LLM provider is configured.
 // Everything else in the app talks to `generateAnalysis(payload)` only -
 
-
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.6-flash";
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
 const SYSTEM_PROMPT = `You are a competitive programming coach analyzing a student's practice data across Codeforces, CodeChef and LeetCode.
 You will be given PRE-COMPUTED statistics only - never recompute, re-derive or guess any number yourself; your job is purely diagnosis, explanation and coaching using the numbers you're handed.
@@ -40,10 +39,37 @@ Rules:
 - List at most 8 weakTopics total, ordered by each topic's highest tag weight descending.
 - Reuse the platform's own pre-computed trend label for ratingAnalysis unless the numbers clearly disagree with it.
 - Keep "reason"/"note"/"recommendation" fields under 200 characters each.
-- Ground every claim in the provided stats; never invent numbers. Insight over restated arithmetic - e.g. "rating plateaued despite steady volume -> likely stuck on the same problem archetypes" is the kind of diagnosis worth giving.`;
+- Ground every claim in the provided stats; never invent numbers. Insight over restated arithmetic - e.g. "rating plateaued despite steady volume -> likely stuck on the same problem archetypes" is the kind of diagnosis worth giving.
+- CRITICAL JSON FORMATTING RULES: Do NOT include trailing commas in arrays or objects. Do NOT use unescaped double quotes inside text string values (use single quotes for emphasis if needed).`;
 
 function buildUserPrompt(payload) {
     return `Here is the coder's pre-aggregated practice data as JSON:\n${JSON.stringify(payload)}\n\nAnalyze this data and return ONLY the JSON object described in the system instructions.`;
+}
+
+function safeParseJSON(rawText) {
+    // 1. Strip Markdown code fences if present
+    let cleaned = rawText
+        .replace(/^```json\s*/i, "")
+        .replace(/^```\s*/i, "")
+        .replace(/\s*```$/i, "")
+        .trim();
+
+    // 2. Direct parse attempt
+    try {
+        return JSON.parse(cleaned);
+    } catch (firstError) {
+        // 3. Fallback repair: Fix trailing commas (e.g., `",\n}"` or `",\n]"`)
+        const repaired = cleaned.replace(/,\s*([}\]])/g, "$1");
+
+        try {
+            return JSON.parse(repaired);
+        } catch (secondError) {
+            console.error("\n❌ RAW GEMINI RESPONSE THAT FAILED PARSING:\n");
+            console.error(rawText);
+            console.error("\n------------------------------------------------\n");
+            throw new Error(`JSON Parse Error: ${firstError.message}`);
+        }
+    }
 }
 
 async function callGemini(payload) {
@@ -56,9 +82,9 @@ async function callGemini(payload) {
         system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents: [{ role: "user", parts: [{ text: buildUserPrompt(payload) }] }],
         generationConfig: {
-            temperature: 0.4,
+            temperature: 0.2, // Reduced from 0.4 to minimize formatting hallucinations
             responseMimeType: "application/json",
-            maxOutputTokens: 20000,
+            maxOutputTokens: 4096,
         }
     };
 
@@ -76,8 +102,8 @@ async function callGemini(payload) {
     const data = await response.json();
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) throw new Error("Gemini returned an empty response");
-    console.log("Response : ", text);
-    return JSON.parse(text);
+
+    return safeParseJSON(text);
 }
 
 // Register additional providers here behind the same (payload) -> parsed JSON interface.
