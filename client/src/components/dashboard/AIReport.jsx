@@ -55,7 +55,7 @@ export default function AIReport() {
           <Sparkles className="w-5 h-5 text-blue-500" />
           <div>
             <h2 className="text-xl font-semibold">AI Report</h2>
-            <p className={`text-sm ${subHeading}`}>Diagnosis of your weak topics, rating trend and consistency</p>
+            <p className={`text-sm ${subtleText}`}>Diagnosis of your weak topics, rating trend and consistency</p>
           </div>
         </div>
 
