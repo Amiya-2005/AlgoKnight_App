@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import Buffer from '../components/common/Buffer';
 import Button from '../components/common/Button';
-import { Plus, Search } from 'lucide-react';
+import { Plus, Search, Trash2, X } from 'lucide-react';
 import { CodeChefIcon, CodeForcesIcon, LeetCodeIcon } from '../components/common/Icons';
 import { NetworkContext } from '../context/NetworkContext';
 import { toast } from 'react-toastify';
@@ -65,7 +65,7 @@ const UserCard = ({ user, onRemove, platformIcons, theme }) => {
               : 'text-gray-500 hover:text-red-500 hover:bg-red-50'
               }`}
           >
-            🗑️
+            <Trash2 className="w-4 h-4 mx-auto" />
           </button>
 
           {showConfirm && (
@@ -199,7 +199,7 @@ const SearchModal = ({ isOpen, platformIcons, onClose, onAddUser, theme }) => {
               : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
               }`}
           >
-            ✕
+            <X className="w-4 h-4 mx-auto" />
           </button>
         </div>
 

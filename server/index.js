@@ -20,6 +20,7 @@ import toggleFriend from './controllers/Friends/toggleFriend.js';
 
 import dashboardData from './controllers/PageData/dashBoardData.js';
 import smartSheetData from './controllers/PageData/smartSheet.js';
+import getAIAnalysis from './controllers/PageData/aiAnalysis.js';
 import { getAllConnections, searchUser } from './controllers/PageData/networkData.js';
 import { addToFavorite, getFavorites, getUpsolve, removeFromFavorite } from './controllers/PageData/contestActions.js';
 import { addStumble, getAllStumbles, removeStumble } from './controllers/PageData/stumbles.js';
@@ -71,6 +72,7 @@ app.get("/fetch/dashboard", dashboardData)
 app.get("/fetch/network", getAllConnections)
 app.post("/fetch/searchUser", searchUser)          //To search for new users while expanding network
 app.get("/fetch/smartSheet", smartSheetData)
+app.get("/fetch/aiAnalysis", getAIAnalysis)
 
 app.get("/contests/upsolve", getUpsolve);
 app.get("/contests/favorites/get", getFavorites);

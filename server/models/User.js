@@ -45,15 +45,68 @@ const userSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Problem",
             },
-            count: {
-                type: Number,      //No of solvers in user's network
+            connectionsSolved: {
+                type: Number,      //No of friends/connections who have solved this problem (informational, computed post-selection)
                 required: true,
             },
+            matchedTopic: {
+                type: String,      //human-readable weak topic this problem was picked for (null when built via fallback)
+                default: null,
+            },
+            matchedTag: {
+                type: String,      //exact DB tag string that was matched (null when built via fallback)
+                default: null,
+            },
         }],
+        personalized: {
+            type: Boolean,        //true when built from AI weak-topic weights, false when built via fallback
+            default: false,
+        },
         lastUpdated: {
             type: Date,
             required: true,
             default: new Date(0)
+        }
+    },
+    aiAnalysis: {
+        summary: {
+            type: String,
+            default: "",
+        },
+        strengths: {
+            type: [String],
+            default: [],
+        },
+        weakTopics: {
+            type: [{
+                topic: String,          //human-readable label, e.g. "Graph Traversal" - what's shown to the user
+                reason: String,
+                tags: {
+                    type: [{
+                        tag: String,     //exact DB tag string (letter-for-letter match to what was fed to the LLM) - used to filter problems
+                        weight: Number,  //1 (minor) - 10 (critical), used as smartsheet priority weight for this specific tag
+                    }],
+                    default: [],
+                },
+            }],
+            default: [],
+        },
+        ratingAnalysis: {
+            codeforces: { trend: String, note: String },
+            codechef: { trend: String, note: String },
+            leetcode: { trend: String, note: String },
+        },
+        consistencyAnalysis: {
+            note: { type: String, default: "" },
+            recommendation: { type: String, default: "" },
+        },
+        keyPoints: {
+            type: [String],
+            default: [],
+        },
+        lastUpdated: {
+            type: Date,
+            default: null,
         }
     },
     notes: [{

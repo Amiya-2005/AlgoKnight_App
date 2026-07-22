@@ -4,11 +4,13 @@ import CalendarHeatmap from '../components/dashboard/CalendarHeatmap';
 import RatingPlot from '../components/dashboard/RatingPlot';
 import UpcomingContests from '../components/dashboard/UpcomingContests';
 import PieChart from '../components/dashboard/PieChart';
+import AIReport from '../components/dashboard/AIReport';
 import { ThemeContext } from '../context/ThemeContext';
 import { useDashboardData } from '../context/DashBoardContext';
 import { AuthContext } from '../context/AuthContext';
 import Buffer from '../components/common/Buffer';
 import { CodeChefIcon, CodeForcesIcon, LeetCodeIcon } from '../components/common/Icons';
+import { Globe, PieChart as PieChartIcon, LineChart, Flame, Star, Trophy, BarChart3, CheckCircle2, Tag, Target } from 'lucide-react';
 
 const lightColors = [
   'bg-indigo-500', 'bg-amber-400', 'bg-teal-400', 'bg-pink-400', 'bg-emerald-400',
@@ -183,7 +185,6 @@ export default function Dashboard() {
                 <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-500">
                   {getGreeting()}, {userData.name.split(' ')[0]}
                 </h1>
-                <span className="text-2xl">👋</span>
               </div>
             </div>
 
@@ -201,6 +202,11 @@ export default function Dashboard() {
           </div>
         </AnimatedCard>
 
+        {/* AI Report Section */}
+        <AnimatedCard className="mb-6">
+          <AIReport />
+        </AnimatedCard>
+
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="xl:col-span-2 space-y-6">
@@ -211,7 +217,7 @@ export default function Dashboard() {
               : 'bg-white border border-gray-200 shadow-sm'
               }`}>
               <div className="flex items-center space-x-2 mb-6">
-                <span className="text-lg">🌐</span>
+                <Globe className="w-5 h-5 text-blue-500" />
                 <h2 className="text-xl font-semibold">Platform Selection</h2>
               </div>
 
@@ -313,7 +319,7 @@ export default function Dashboard() {
                 : 'bg-white border border-gray-200 shadow-sm'
                 }`}>
                 <div className="flex items-center space-x-2 mb-6">
-                  <span className="text-lg">📊</span>
+                  <PieChartIcon className="w-5 h-5 text-blue-500" />
                   <div>
                     <h2 className="text-xl font-semibold">Problem Categories</h2>
                     <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} capitalize`}>
@@ -391,7 +397,7 @@ export default function Dashboard() {
                 : 'bg-white border border-gray-200 shadow-sm'
                 }`}>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-lg">📈</span>
+                  <LineChart className="w-5 h-5 text-blue-500" />
                   <div>
                     <h2 className="text-xl font-semibold">Rating Progress</h2>
                     <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} capitalize`}>
@@ -413,7 +419,7 @@ export default function Dashboard() {
                 : 'bg-white border border-gray-200 shadow-sm'
                 }`}>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-lg">🔥</span>
+                  <Flame className="w-5 h-5 text-orange-500" />
                   <div>
                     <h2 className="text-xl font-semibold">Activity Heatmap</h2>
                     <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} capitalize`}>
@@ -441,7 +447,7 @@ export default function Dashboard() {
                 : 'bg-white border border-gray-200 shadow-sm'
                 }`}>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-lg">⭐</span>
+                  <Star className="w-5 h-5 text-amber-500" />
                   <h2 className="text-lg font-semibold">Problem of the Day</h2>
                 </div>
                 <LeetcodeChallenge />
@@ -455,7 +461,7 @@ export default function Dashboard() {
                 : 'bg-white border border-gray-200 shadow-sm'
                 }`}>
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-lg">🏆</span>
+                  <Trophy className="w-5 h-5 text-yellow-500" />
                   <h2 className="text-lg font-semibold">Upcoming Contests</h2>
                 </div>
                 <UpcomingContests />
@@ -475,19 +481,19 @@ export default function Dashboard() {
 
                 <div className="space-y-3">
                   {[
-                    { label: 'Current Rating', value: ratingData[activePlatform][ratingData[activePlatform].length - 1]?.rating || 0, icon: '📊' },
-                    { label: 'Problems Solved', value: pieChartData[activePlatform]?.solved || 0, icon: '✅' },
-                    { label: 'Categories Covered', value: getCategories().length, icon: '🏷️' },
+                    { label: 'Current Rating', value: ratingData[activePlatform][ratingData[activePlatform].length - 1]?.rating || 0, icon: BarChart3 },
+                    { label: 'Problems Solved', value: pieChartData[activePlatform]?.solved || 0, icon: CheckCircle2 },
+                    { label: 'Categories Covered', value: getCategories().length, icon: Tag },
                     {
                       label: 'Completion Rate',
                       value: `${Math.round((pieChartData[activePlatform]?.solved || 0 ) / (activePlatform === 'leetcode' ? 2500 : activePlatform === 'codeforces' ? 8000 : 3000) * 100)}%`,
-                      icon: '🎯'
+                      icon: Target
                     }
                   ].map((stat) => (
                     <div key={stat.label} className={`flex items-center justify-between p-4 rounded-lg transition-all duration-300 hover:scale-[1.02] ${theme === 'dark' ? 'bg-gray-700/40' : 'bg-gray-50/60'
                       }`}>
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm">{stat.icon}</span>
+                        <stat.icon className="w-4 h-4 text-gray-400" />
                         <span className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                           {stat.label}
                         </span>
