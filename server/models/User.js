@@ -46,16 +46,16 @@ const userSchema = new mongoose.Schema({
                 ref: "Problem",
             },
             connectionsSolved: {
-                type: Number,      //No of friends/connections who have solved this problem (informational, computed post-selection)
+                type: Number,      
                 required: true,
                 default: 0,
             },
             matchedTopic: {
-                type: String,      //human-readable weak topic this problem was picked for (null when built via fallback)
+                type: String,      
                 default: null,
             },
             matchedTag: {
-                type: String,      //exact DB tag string that was matched (null when built via fallback)
+                type: String,      
                 default: null,
             },
         }],
