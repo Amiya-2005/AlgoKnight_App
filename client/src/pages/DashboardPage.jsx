@@ -337,7 +337,7 @@ export default function Dashboard() {
                       data={getCategories().map(({ tag, count }) => ({
                         tag,
                         count,
-                        percentage: Math.max(1, Math.round(count / pieChartData[activePlatform].total * 100))
+                        percentage: Math.max(1, Math.round(count / pieChartData[activePlatform].solved * 100))
                       }))}
                       darkMode={theme === 'dark'}
                     />
@@ -348,7 +348,7 @@ export default function Dashboard() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
                       {getCategories().slice(0, showAllLegend ? undefined : 14).map(({ tag, count }, index) => {
                         const colorClass = theme === 'dark' ? darkColors[index % darkColors.length] : lightColors[index % lightColors.length];
-                        const percentage = Math.max(1, Math.round((count / pieChartData[activePlatform].total) * 100));
+                        const percentage = Math.max(1, Math.round((count / pieChartData[activePlatform].solved) * 100));
 
                         return (
                           <div key={tag} className={`flex items-center justify-between p-4 rounded-lg transition-all duration-300 hover:scale-[1.02] ${theme === 'dark' ? 'bg-gray-700/40' : 'bg-gray-50/60'

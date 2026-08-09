@@ -5,7 +5,7 @@ import { User } from './models/User.js';
 import mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
-export const find_spammers = async () => {
+export const clean_spammers = async () => {
     const profiles = await Profile.find();
 
     const spammers = [];
@@ -25,15 +25,27 @@ export const find_spammers = async () => {
 }
 
 const fun = async () => {
-    const profiles = await Profile.find();
+    console.log("Maintenance started");
+    const profile = await Profile.findOne({bio : "Consistent Programmer"});
 
-    for(const profile of profiles){
-        profile.codeforces.solved = 0;
-        profile.codeforces.total = 0;
-        profile.leetcode.solved = 0;
-        profile.leetcode.total = 0;
-        await profile.save();
+    let sum = 0;
+    for(let i = 0; i < profile.codeforces.categories.length; i++){
+        sum += profile.codeforces.categories[i].count;
     }
+    const tot = profile.codeforces.solved;
+    console.log(sum);
+    console.log(tot);
+    let temp = tot;
+
+    console.log(profile);
+    for(let i = 0; i < profile.codeforces.categories.length; i++){
+        profile.codeforces.categories[i].count = Math.floor(profile.codeforces.categories[i].count * tot / sum);
+        temp -= profile.codeforces.categories[i].count;
+    }
+    profile.codeforces.categories[0].count += temp;
+
+    await profile.save();
+    //await clean_spammers();
     console.log("Done boy!")
 }
 
