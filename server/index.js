@@ -3,7 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { dbConnect } from './configs/database.js';
 
-// import './z.clean_db.js';
+// import './z.maintenance.js';
 
 import tokenChecker from './middleware/tokenChecker.js';
 import signup from './controllers/Auth/signup.js';
