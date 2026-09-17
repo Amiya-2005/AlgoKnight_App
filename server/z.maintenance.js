@@ -32,20 +32,9 @@ const fun = async () => {
     for(let i = 0; i < profile.codeforces.categories.length; i++){
         sum += profile.codeforces.categories[i].count;
     }
-    const tot = profile.codeforces.solved;
-    console.log(sum);
-    console.log(tot);
-    let temp = tot;
-
-    console.log(profile);
-    for(let i = 0; i < profile.codeforces.categories.length; i++){
-        profile.codeforces.categories[i].count = Math.floor(profile.codeforces.categories[i].count * tot / sum);
-        temp -= profile.codeforces.categories[i].count;
-    }
-    profile.codeforces.categories[0].count += temp;
-
+    profile.codeforces.solved = sum;
     await profile.save();
-    //await clean_spammers();
+
     console.log("Done boy!")
 }
 
